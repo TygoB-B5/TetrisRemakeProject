@@ -1,0 +1,1 @@
+Start "" "%ProgramFiles%\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe" "%cd%"
