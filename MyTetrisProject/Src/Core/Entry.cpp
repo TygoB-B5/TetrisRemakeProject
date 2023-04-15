@@ -8,11 +8,12 @@
 
 int main()
 {
-	TetrisGame::Game* game = new TetrisGame::Game();
+	TetrisGame::Game* game = nullptr;
 
 	try
 	{
-		game->Init();
+		game = new TetrisGame::Game();
+
 		while (game->bIsRunning)
 		{
 			game->Tick();

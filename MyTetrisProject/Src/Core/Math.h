@@ -5,6 +5,9 @@
 
 namespace TetrisGame
 {
+	/// <summary>
+	/// FMath class for maths used in program.
+	/// </summary>
 	struct FMath
 	{
 		static FORCEINLINE float Sqrt(float value)

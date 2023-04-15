@@ -14,5 +14,7 @@ add_executable (MyTetrisProject ${SOURCES} "Src/Core/Renderer.h")
 
 add_subdirectory(Lib/SDL2-2.26.4)
 
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Src)
 target_include_directories(${PROJECT_NAME} PUBLIC Lib/SDL2-2.26.4/include)
+
 target_link_libraries(${PROJECT_NAME} SDL2)

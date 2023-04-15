@@ -6,13 +6,23 @@
 #include "Time.h"
 #include "EventHandler.h"
 #include "Renderer.h"
+#include "Game/Tetris.h"
 
 namespace TetrisGame
 {
+	/// <summary>
+	/// Main game instance class.
+	/// </summary>
 	class Game
 	{
 	public:
-		void Init();
+		Game();
+		~Game();
+
+		static Game* Get()
+		{
+			return Instance;
+		}
 
 		void ShutDown();
 
@@ -21,10 +31,13 @@ namespace TetrisGame
 		void OnWindowEvent(SDL_Event* e);
 
 	public:
+		FTetris* Tetris;
 		FEventHandler* EventHandler;
 		FTime* Time;
-		SDL_Window* Window;
 		FRenderer* Renderer;
 		bool bIsRunning;
+
+	private:
+		static Game* Instance;
 	};
 }

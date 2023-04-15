@@ -1,10 +1,15 @@
 #pragma once
 
+#include "Core.h"
 #include "Math.h"
+#include "Primitives.h"
 #include "SDL.h"
 
 namespace TetrisGame
 {
+	/// <summary>
+	/// FRenderer used to render graphics.
+	/// </summary>
 	class FRenderer
 	{
 	public:
@@ -35,19 +40,24 @@ namespace TetrisGame
 			Vec2 screenSize = { size.x * Resolution.x,
 								size.y * Resolution.y };
 
-			Vec2 screenPosition = { position.x * Resolution.x - screenSize.x * 0.5f,
-									position.y * Resolution.y - screenSize.y * 0.5f };
+			Vec2 screenPosition = { position.x * Resolution.x,
+									position.y * Resolution.y};
 
-			SDL_SetRenderDrawColor(Renderer, color.x, color.y, color.z, 225);
+			SDL_SetRenderDrawColor(Renderer, (Uint8)(color.x * 225.0f), (Uint8)(color.y * 225.0f), (Uint8)(color.z * 225.0f), 225);
 
 			SDL_Rect rect({ (int)screenPosition.x, (int)screenPosition.y, (int)screenSize.x, (int)screenSize.y });
 			SDL_RenderFillRect(Renderer, &rect);
 
 		}
 
-		void Clear(const Vec3& color = { 10, 10, 14 }) const
+		void DrawRect(const Rect& rect) const
 		{
-			SDL_SetRenderDrawColor(Renderer, color.x, color.y, color.z, 225);
+			DrawRect(rect.Position, rect.Size, rect.Color);
+		}
+
+		void Clear(const Vec3& color = { 0.01f, 0.01f, 0.02f }) const
+		{
+			SDL_SetRenderDrawColor(Renderer, (Uint8)(color.x * 225.0f), (Uint8)(color.y * 225.0f), (Uint8)(color.z * 225.0f), 225);
 			SDL_RenderClear(Renderer);
 		}
 

@@ -1,13 +1,16 @@
 #pragma once
 #include "Core.h"
+#include <sstream>
 #include <iostream>
 
 namespace TetrisGame
 {
-#ifdef _DEBUG
-
+	/// <summary>
+	/// FLog class used for logging messages.
+	/// </summary>
 	struct FLog
 	{
+#ifdef _DEBUG
 		template<typename T> 
 		static FORCEINLINE void Message(const T& message)
 		{
@@ -31,8 +34,9 @@ namespace TetrisGame
 		{
 			if (!condition)
 			{
-				std::cout << "ASSERT: " << message << std::endl;
-				throw std::exception("Assert has been called");
+				std::stringstream ss;
+				ss << "ASSERT: " << message << std::endl;
+				throw std::exception(ss.str().c_str());
 			}
 		}
 

@@ -4,17 +4,20 @@
 
 namespace TetrisGame
 {
+	/// <summary>
+	/// FTime class to manage in-game time.
+	/// </summary>
 	class FTime
 	{
 	public:
 		typedef double TimePoint;
 
-		TimePoint GetTimeDelta()
+		FORCEINLINE TimePoint GetTimeDelta()
 		{
 			return TimeDelta;
 		}
 
-		TimePoint GetTimeSinceStartup()
+		FORCEINLINE TimePoint GetTimeSinceStartup()
 		{
 			return TimeSinceStartup;
 		}
@@ -23,7 +26,7 @@ namespace TetrisGame
 
 	private:
 
-		void Tick()
+		FORCEINLINE void Tick()
 		{
 			double tickTime = (double)SDL_GetTicks() / 1000.0f;
 			TimeDelta = (double)(tickTime - TimeSinceStartup);
